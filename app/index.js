@@ -4,7 +4,7 @@ import foo from './foo'
 function component () {
   var element = j('<div></div>');
   /* lodash is required for the next line to work */
-  element.html(_.join(["hello","webpack"],''))
+  element.html(_.join(["hi","webpack"],''))
   return element.get(0);
 }
 
