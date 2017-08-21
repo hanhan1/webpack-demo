@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import Welcome from './Welcom';
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // ReactDOM.render(<h1>Hi world</h1>, document.getElementById('root'));
 // function tick(){
@@ -26,8 +26,8 @@ import Welcome from './Welcom';
 //     return <h1>hello Component</h1>;
 //   }
 // }
-ReactDOM.render(
-  <Welcome name="hanhan"/>,
-  document.getElementById('root')
-)
+// ReactDOM.render(
+//   <Welcome name="hanhan"/>,
+//   document.getElementById('root')
+// )
 registerServiceWorker();
