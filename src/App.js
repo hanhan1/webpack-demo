@@ -12,7 +12,10 @@ class App extends Component {
     this.state = {
       user: getCurrentUser() || {},
       newTodo: '',
-      todoList: []
+      todoList: [
+        {id:1,title:'第一个待办'},
+       {id:1,title:'第一个待办'}
+       ]
     }
   }
   render() {
@@ -21,6 +24,7 @@ class App extends Component {
       .map((item, index) => {
         return (
           <li key={index}>
+          
             <TodoItem todo={item} onToggle={this.toggle.bind(this)}
               onDelete={this.delete.bind(this)}
             />
@@ -64,6 +68,7 @@ class App extends Component {
   }
   componentDidUpdate() {
   }
+
   toggle(e, todo) {
     todo.status = todo.status === 'completed' ? '' : 'completed'
     this.setState(this.state)
@@ -77,7 +82,7 @@ class App extends Component {
   addTodo(event) {
     this.state.todoList.push({
       id: idMaker(),
-      title: event.target.title,
+      title: event.target.value,
       status: null,
       deleted: false
     })
