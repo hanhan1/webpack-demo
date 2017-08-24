@@ -4,7 +4,7 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import 'normalize.css'
 import './reset.css'
-import UserDialog from './UserDialog '
+import UserDialog from './UserDialog'
 
 class App extends Component {
   constructor(props){
@@ -18,15 +18,16 @@ class App extends Component {
     let todos = this.state.todoList
     .filter((item)=>!item.deleted)
     .map((item,index)=>{
-      return (
+      return(
         <li key={index}>
           <TodoItem todo={item} onToggle={this.toggle.bind(this)}
           onDelete={this.delete.bind(this)}
           />
         </li>
       )
-    })
-    console.log("加了个TODO了－－"+todos)
+  })
+  
+  
 
     return (
       <div className="App">
