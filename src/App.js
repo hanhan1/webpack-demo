@@ -13,8 +13,7 @@ class App extends Component {
       user: getCurrentUser() || {},
       newTodo: '',
       todoList: [
-        {id:1,title:'第一个待办'},
-       {id:1,title:'第一个待办'}
+        
        ]
     }
   }

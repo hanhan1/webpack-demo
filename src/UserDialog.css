@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: hsla(0, 0%, 0%, 0.40)
 }
 
 .UserDialog {
@@ -15,7 +16,7 @@
   min-width: 20em;
   background: white;
   border: 1px solid #aaa;
-  box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.35);
+  
 }
 
 .UserDialog>nav:first-child {
@@ -32,6 +33,12 @@
   padding: 0 1em 1em;
   
 }
+.UserDialog.forgotPassword >h3{
+  padding: 1em;
+}
+.UserDialog.UserDialog.forgotPassword>form{
+  padding: 0 1em 1em;
+}
 
 .UserDialog form>.row {
   display: flex;
@@ -44,4 +51,13 @@
 
 .UserDialog form>.row.actions {
   padding-left: 4em;
+  display: flex;
+  align-items: center;
+}
+.UserDialog form>.row.actions button{
+  margin-right: .5em;
+}
+.UserDialog button{
+  font:inherit;
+  padding: .2em;
 }
