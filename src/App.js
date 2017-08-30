@@ -6,28 +6,26 @@ import 'normalize.css'
 import './reset.css'
 import UserDialog from './UserDialog'
 import './localStore'
-import { getCurrentUser, signOut, TodoModel, loadList,updateListTable} from './leanCloud'
+import { getCurrentUser, signOut, TodoModel, loadList,updateListTable,saveListTable} from './leanCloud'
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       user: getCurrentUser() || {},
       newTodo: '',
-      todoList: [
-
-      ]
+      todoList: []
     }
-    let user = getCurrentUser()
-    if (user) {
-      TodoModel.getByUser(user, (todos) => {
-        let stateCopy = JSON.parse(JSON.stringify(this.state))
-        stateCopy.todoList = todos
-        this.setState(stateCopy)
-      })
-    }
-    if(this.state.user){
-      this.initTodoList.call(this)
-    }
+    // let user = getCurrentUser()
+    // if (user) {
+    //   TodoModel.getByUser(user, (todos) => {
+    //     let stateCopy = JSON.parse(JSON.stringify(this.state))
+    //     stateCopy.todoList = todos
+    //     this.setState(stateCopy)
+    //   })
+    // }
+    // if(this.state.user){
+    //   this.initTodoList.call(this)
+    // }
   }
   render() {
     let todos = this.state.todoList
@@ -37,7 +35,7 @@ class App extends Component {
           <li key={index}>
 
             <TodoItem todo={item} onToggle={this.toggle.bind(this)}
-              onDelete={this.delete.bind(this)}
+              onDelete={this.delete.bind(this)} id={item.id}
             />
           </li>
         )
@@ -85,8 +83,12 @@ class App extends Component {
       this.initTodoList.call(this)
     }
   }
-  componentDidUpdate(){
-  } 
+  componentDidMount(){
+    window.addEventListener('resize',(function(e){
+      let width = window.innerWidth
+      
+    }))
+  }
   initTodoList(){
     function success(list){
       this.state.todoList = list;
@@ -97,7 +99,7 @@ class App extends Component {
     }
     function error(){
       this.addTodo('null',true)
-      let stateCopy = JSON.stringify(this.state)
+      let stateCopy = JSON.parse(JSON.stringify(this.state))
       this.setState(stateCopy)
       this.initTodoList.call(this)
     }
@@ -108,12 +110,12 @@ class App extends Component {
   toggle(e, todo) {
     let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
-    TodoModel.update(todo, () => {
-      this.setState(this.state)
-    }, (error) => {
-      todo.status = oldStatus
-      this.setState(this.state)
-    })
+    // TodoModel.update(todo, () => {
+    //   this.setState(this.state)
+    // }, (error) => {
+    //   todo.status = oldStatus
+    //   this.setState(this.state)
+    // })
     this.setState(this.state)
 
     updateListTable(this.state.user,todo.id,'status',todo.status)
@@ -126,28 +128,44 @@ class App extends Component {
   }
   addTodo(event) {
     let newTodo = {
+      id:null,
       title: event.target.value,
       status: '',
       deleted: false
     }
-    TodoModel.create(newTodo, (id) => {
-      newTodo.id = id
-      this.state.todoList.push(newTodo)
+    // TodoModel.create(newTodo, (id) => {
+    //   newTodo.id = id
+    //   this.state.todoList.push(newTodo)
+    //   this.setState({
+    //     newTodo: '',
+    //     todoList: this.state.todoList
+    //   })
+    // }, (error) => {
+    //   console.log(error)
+    // })
+    function success(num){
+      newTodo.id = num
+      this.state.todoList.unshift(newTodo);
       this.setState({
-        newTodo: '',
-        todoList: this.state.todoList
-      })
-    }, (error) => {
-      console.log(error)
-    })
+        newTodo:'',
+        todoList:this.state.todoList
+      });
+    }
+    function error(){
+
+    }
+    saveListTable(newTodo,this.state.user,success.bind(this),error)
   }
+
+
   delete(event, todo) {
-    TodoModel.destory(todo.id, () => {
-      todo.deleted = true
-      this.setState(this.state)
-    })
+    // TodoModel.destory(todo.id, () => {
+    //   todo.deleted = true
+    //   this.setState(this.state)
+    // })
+    todo.deleted = true
     this.setState(this.state)
-    updateListTable(this.state.user,todo.id,'status',todo.status)
+    updateListTable(this.state.user,todo.id,'deleted',true)
   }
 }
 

@@ -57,7 +57,7 @@ export function loadList(userID,successFn,errorFn){
   var list  = []
   AV.Query.doCloudQuery(`select * from ${className}`)
   .then(function(res){
-    for(let i=0;i<res.results[i].id;i++){
+    for(let i=0;i<res.results.length;i++){
       let obj = {
         id:res.results[i].id,
         ...res.results[i].attributes
@@ -78,6 +78,22 @@ export function updateListTable(user,itemId,key,value){
   var item =AV.Object.createWithoutData(className,itemId)
   item.set(key,value)
   item.save()
+}
+
+export function saveListTable(item,user,successFn,errorFn){
+  var TodoList = AV.Object.extend("todo_"+user.id)
+  var todoList = new TodoList()
+  todoList.set('username',user.username)
+  todoList.set('title',item.title)
+  todoList.set('status',item.status)
+  todoList.set('deleted',item.deleted)
+  todoList.set('group',item.group)
+  todoList.save().then(function(todo){
+    successFn.call(null,todo.id)
+  },function(error){
+    errorFn.call(null)
+    alert(error)
+  })
 }
 export function signUp(email,username,password,successFn,errorFn){
   var user = new AV.User()
