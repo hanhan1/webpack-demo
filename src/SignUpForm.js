@@ -12,7 +12,7 @@ export default function(props){
          <input type="text" value={props.formData.username}
          onChange={props.onChange.bind(null,'username')}/>
         </div> 
-        <div>
+        <div className="row">
           <label>密码</label>
           <input type="password" value={props.formData.password}
           onChange={props.onChange.bind(null,'password')}/>

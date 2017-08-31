@@ -4,21 +4,32 @@
   left: 0;
   bottom: 0;
   right: 0;
+  background-attachment: fixed;
+  /*background-position: center;*/
+  background-size: 100vw;
+  background-color:#ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: hsla(0, 0%, 0%, 0.40)
 }
 
 .UserDialog {
-  border: 1px solid;
+  margin-top: 100px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  min-width: 20em;
+  min-width: 24em;
   background: white;
-  border: 1px solid #aaa;
+  box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
   
 }
-
+.UserDialog>h1{
+  text-align: center;
+  color: #db4c3f;
+  font-size: 2.5em;
+}
 .UserDialog>nav:first-child {
   padding: 1em;
   margin-left: -2em;
@@ -35,6 +46,7 @@
 }
 .UserDialog.forgotPassword >h3{
   padding: 1em;
+  text-align: center;
 }
 .UserDialog.UserDialog.forgotPassword>form{
   padding: 0 1em 1em;
@@ -48,14 +60,42 @@
 .UserDialog form>.row>label:first-child {
   width: 4em;
 }
+.UserDialog form>.row>input[type="text"],
+.UserDialog form>.row>input[type="password"]{
+  display: block;
+  width: 75%;
+  margin: 0 auto;
+  padding: 8.5px 0;
+  border: 1px solid #ff9999;
+  box-shadow: inset 0 0 2px 0 #ffaaaa;
+  border-radius: 2px;
+  padding-left: 5px;
+}
+
+.UserDialog form>.row>input[type="text"]:focus,
+.UserDialog form>.row>input[type="password"]:focus{
+  outline-color: #ffcc99;
+}
 
 .UserDialog form>.row.actions {
   padding-left: 4em;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .UserDialog form>.row.actions button{
   margin-right: .5em;
+  cursor: pointer;
+  background-color: #db4c3f;
+  color: #fff;
+  border:none;
+  padding: 4px 0;
+  border-radius: 3px;
+  display: block;
+  width: 75%;
+  margin: 0 auto;
+  line-height: 2em;
 }
 .UserDialog button{
   font:inherit;
