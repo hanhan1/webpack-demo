@@ -134,8 +134,7 @@ export default class UserDialog extends Component {
       }
     }
     if(this.state.formData.email.match(/@/) === null){
-      alert('请输入正确的邮箱地址')
-      return
+      alert("请输入正确的邮箱地址")
     }
     sendPasswordResetEmail(this.state.formData.email)
   }

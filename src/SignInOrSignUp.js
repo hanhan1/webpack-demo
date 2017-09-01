@@ -17,7 +17,9 @@ export default class SignInOrSignUp extends Component {
   render() {
     return (
       <div className="signInOrSignUp">
+       <span>TodoList</span>
         <nav>
+
             <input type="radio" value="signUp" id="sign-up" name="nav"
               className={this.state.selected == "signUp" ? "checked":null}
               checked={this.state.selected === 'signUp'}

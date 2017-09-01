@@ -7,6 +7,8 @@ import './reset.css'
 import UserDialog from './UserDialog'
 import './localStore'
 import { getCurrentUser, signOut, TodoModel, loadList,updateListTable,saveListTable} from './leanCloud'
+import {Button} from 'element-react'
+import 'element-theme-default'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -46,8 +48,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{this.state.user.username || '我'}的待办
-       {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
+       {this.state.user.id ? <Button type="primary" onClick={this.signOut.bind(this)}>登出</Button> : null}
         </h1>
+
         <div className="inputWrapper">
           <TodoInput content={this.state.newTodo}
             onChange={this.changeTitle.bind(this)}

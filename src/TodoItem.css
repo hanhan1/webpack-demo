@@ -1,9 +1,21 @@
 .TodoItem{
+  border-radius: 4px;
+  margin: 1px;
+  background-color: #fff;
+  font-size: 15px;
   padding: .5em;
   display: flex;
   align-items: center;
 }
+.TodoItem>input[type="checkbox"]{
+  display: none;
+  text-decoration: none;
+}
 .TodoItem>.title{
   flex-grow: 1;
   padding: 0 .5em;
+}
+.TodoItem>button{
+  border: none;
+  background-color: transparent;
 }

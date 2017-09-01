@@ -4,6 +4,12 @@
   justify-content: center;
   font-size: 18px;
 }
+.signInOrSignUp span{
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .signInOrSignUp nav label{
   cursor: pointer;
   background: #fff;

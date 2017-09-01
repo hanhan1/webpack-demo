@@ -1,24 +1,24 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import './TodoInput.css'
 
-export default class TodoInput extends Component{
-  render(){
+export default class TodoInput extends Component {
+  render() {
     return <input type="text" defaultValue={this.props.content}
-     className="TodoInput"
-     onChange={this.changeTitle.bind(this)}
-     onKeyPress={this.submit.bind(this)}/>
+      className="TodoInput"
+      onChange={this.changeTitle.bind(this)}
+      onKeyPress={this.submit.bind(this)} />
   }
-  submit(e){
-    if(e.key === 'Enter'){
+  submit(e) {
+    if (e.key === 'Enter') {
       console.log('用户按回车了');
-      if(e.target.value.trim() !== ''){
+      if (e.target.value.trim() !== '') {
         this.props.onSubmit(e)
       }
-      
-     //this.props.onSubmit.call()
+
+      //this.props.onSubmit.call()
     }
   }
-  changeTitle(e){
+  changeTitle(e) {
     this.props.onChange(e)
   }
 }

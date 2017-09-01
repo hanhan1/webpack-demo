@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './forgotPasswordForm.css'
 export default class ForgotPasswordForm extends Component {
   render() {
     return (
@@ -17,9 +17,7 @@ export default class ForgotPasswordForm extends Component {
             <button type="submit">发送重置邮件</button>
             <a href="#" onClick={this.props.onSignIn}>返回登录</a>
           </div>
-
         </form>
-
       </div>
     )
   }
