@@ -7,7 +7,7 @@
   background-attachment: fixed;
   background-position: center;
   background-size: 100vw;
-  background-color:#ccc;
+  background-color:#F5F5F5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,7 +88,7 @@
 .UserDialog form>.row.actions button{
   margin-right: .5em;
   cursor: pointer;
-  background-color: #db4c3f;
+  background-color:#db4c3f;
   color: #fff;
   border:none;
   padding: 4px 0;

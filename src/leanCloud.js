@@ -103,6 +103,7 @@ export function signUp(email,username,password,successFn,errorFn){
   user.signUp().then(function (loginedUser){
     let user = getUserFromAVUser(loginedUser)
     successFn.call(null,user)
+    
   },function(error){
     errorFn.call(null,error)
   })

@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #EAD7D7;
 }
 .signInOrSignUp nav label{
   cursor: pointer;

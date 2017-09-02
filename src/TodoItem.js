@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import './TodoItem.css'
-import {Button,Checkbox} from 'element-react'
+import {i,Checkbox} from 'element-react'
 import 'element-theme-default'
 export default class TodoItem extends Component{
   render(){
@@ -10,8 +10,10 @@ export default class TodoItem extends Component{
         <input type="checkbox" id={this.props.id} className={this.props.todo.status}
           checked = {this.props.todo.status === 'completed'}
           onChange = {this.toggle.bind(this)}/>
-        <span className="title">{this.props.todo.title}</span>
-        <Button type="text" onClick={this.delete.bind(this)}>删除</Button>
+        <span className="title">
+        {this.props.todo.title}</span>
+        <i className="el-icon-delete" onClick={this.delete.bind(this)}></i>
+        
       </div>
     )
   }
